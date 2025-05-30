@@ -1,19 +1,21 @@
 package com.eventmasterpro.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class Location {
     //Class attributes
-    private static double id = 0;
-    private String name;
-    private String address;
+    private static double countId=0;
+    private final double id;
+    private final String name;
+    private final String address;
     private int capacity;
-    private ArrayList<String> technicalFeatures;
-    private ArrayList<LocalDate> availableDates;
+    private final ArrayList<String> technicalFeatures;
+    private final ArrayList<LocalDate> availableDates;
     //Constructor of the class
     public Location(String name, String address, int capacity) {
-        this.id = ++id;
+        this.id = ++countId;
         this.name = name;
         this.address = address;
         this.capacity = capacity;
@@ -24,26 +26,8 @@ public class Location {
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public int getCapacity() {
-        return capacity;
-    }
     public void setCapacity(int capacity) {
         this.capacity = capacity;
-    }
-    public double getId() {
-        return id;
-    }
-    public ArrayList<String> getTechnicalFeatures() {
-        return technicalFeatures;
     }
     public ArrayList<LocalDate> getAvailableDates() {
         return availableDates;
@@ -65,16 +49,55 @@ public class Location {
             availableDates.add(date);
         }
     }
-    //Delete date of the available dates
-    public void removeAvailableDate(LocalDate date) {
-        availableDates.remove(date);
+    //Convert object to string to save it
+    public String toFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(";")
+                .append(address).append(";")
+                .append(capacity).append(";");
+        for (String feature : technicalFeatures) {
+            sb.append(feature).append("|");
+        }
+        sb.append(";");
+        for (LocalDate date : availableDates) {
+            sb.append(date.toString()).append("|");
+        }
+        return sb.toString();
     }
-    //Check if date is available
-    public boolean isAvailableOnDate(LocalDate date) {
-        return availableDates.contains(date);
+    //Convert string in object location
+    public static Location fromFileString(String line) {
+        String[] parts = line.split(";");
+        String name = parts.length > 0 ? parts[0] : "Unnamed location";
+        String address = parts.length > 1 ? parts[1] : "No address";
+        int capacity = 0;
+        if (parts.length > 2 && !parts[2].isEmpty()) {
+            try {
+                capacity = Integer.parseInt(parts[2]);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid capacity, defaulting to 0 for line: " + line);
+            }
+        }
+        Location location = new Location(name, address, capacity);
+        if (parts.length > 3 && !parts[3].isEmpty()) {
+            String[] features = parts[3].split("\\|");
+            for (String feature : features) {
+                location.addTechnicalFeature(feature);
+            }
+        }
+        if (parts.length > 4 && !parts[4].isEmpty()) {
+            String[] dates = parts[4].split("\\|");
+            for (String dateStr : dates) {
+                try {
+                    location.addAvailableDate(LocalDate.parse(dateStr));
+                } catch (DateTimeParseException e) {
+                    System.err.println("Invalid date format: " + dateStr);
+                }
+            }
+        }
+        return location;
     }
     @Override
     public String toString() {
-        return "Location name: "+name+"\nLocation address: "+address+"\nLocation capacity: "+capacity;
+        return "Id: "+id+"\nLocation name: "+name+"\nLocation address: "+address+"\nLocation capacity: "+capacity;
     }
 }

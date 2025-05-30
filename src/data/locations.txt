@@ -1,0 +1,4 @@
+Teatro Pablo Tobón;Cra 40 #51-24;500;Luces LED|Sonido Surround|;2025-06-15|2025-06-18|2025-06-06|
+Plaza Mayor;Calle 41 #55-80;300;Proyector 4K|Internet Alta Velocidad|;2025-07-05|2025-07-12|
+Cancha La 70;Carrera 70 #44-10;200;Escenario Móvil|Iluminación Básica|;2025-08-01|2025-08-10|
+La macarena ;medellin;300;;2025-06-06|

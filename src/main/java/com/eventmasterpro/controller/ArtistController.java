@@ -8,56 +8,51 @@ import java.util.ArrayList;
 
 public class ArtistController {
     //List of artist
-    private final ArrayList<Artist> artists = new ArrayList<>();
+    private ArrayList<Artist> artists = new ArrayList<>();
     //Import data validator
-    private final InputValidator  validator = new InputValidator();
+    private final InputValidator validator = new InputValidator();
     //A singleton is made to handle only one instance of the class in the whole execution of the program
     private static ArtistController artistController;
-    private ArtistController(){
-
-    }
+    private ArtistController() {}
     //Function to get instance
     public static ArtistController getArtistController() {
-        if(artistController==null){
+        if (artistController == null) {
             artistController = new ArtistController();
         }
         return artistController;
     }
+    //Set artists from external source (used by DataController)
+    public void setArtists(ArrayList<Artist> artists) {
+        this.artists = artists;
+    }
     //Create a new artist
     public Artist createArtists(String name, String contactInfo) {
-        if(validator.checkEmpty(name)||validator.checkEmpty(contactInfo)){
+        if (validator.checkEmpty(name) || validator.checkEmpty(contactInfo)) {
             return null;
-        }else{
-            return new Artist(name, contactInfo);
+        } else {
+            Artist artist = new Artist(name, contactInfo);
+            if(!artists.contains(artist)) {
+                artists.add(artist);
+            }
+            return artist;
         }
     }
     //Set previous events
-    public String setPastEvents(Artist artist, Event event) {
-        if(artist==null || event==null){
-            return "Missing information to be filled in";
-        }else{
-            artist.addPastEvent(event);
-            return "Past event added";
-        }
+    public void setPastEvents(Artist artist, Event event) {
+        artist.addPastEvent(event);
     }
     //Add technical requirement
-    public String addTechnicalRequirement(String technicalRequirement, Artist artist) {
-        //Check if the technical requirement is not empty
-        if(validator.checkEmpty(technicalRequirement)){
-            return "You must fill in all required fields";
-        }else{
-            artist.addTechnicalRequirement(technicalRequirement);
-            return "Technical requirement added";
-        }
+    public void addTechnicalRequirement(String technicalRequirement, Artist artist) {
+        artist.addTechnicalRequirement(technicalRequirement);
     }
     //Remove technical requirement
     public String deleteTechnicalRequirement(String technicalRequirement, Artist artist) {
-        if(validator.checkEmpty(technicalRequirement)){
+        if (validator.checkEmpty(technicalRequirement)) {
             return "You must fill in all required fields";
-        }else{
-            if(!artist.getTechnicalRequirements().contains(technicalRequirement)){
+        } else {
+            if (!artist.getTechnicalRequirements().contains(technicalRequirement)) {
                 return "The technical requirement to be eliminated is not within the requirements of the requested artist";
-            }else{
+            } else {
                 artist.deleteTechnicalRequirement(technicalRequirement);
                 return "Technical requirement deleted";
             }
@@ -65,28 +60,24 @@ public class ArtistController {
     }
     //Change contact information
     public String changeContactInfo(String contactInfo, Artist artist) {
-        if(artist==null || validator.checkEmpty(contactInfo)){
+        if (artist == null || validator.checkEmpty(contactInfo)) {
             return "You must fill in all required fields";
-        }else{
+        } else {
             artist.setContactInfo(contactInfo);
             return "Contact info changed";
         }
     }
-    //Get all artis
+    //Get all artists
     public ArrayList<Artist> getArtists() {
         return artists;
     }
-    //Add artist to list
-    public void addArtist(Artist artist) {
-        artists.add(artist);
-    }
-    //Show  artist form list
+    //Show artist from list
     public void showArtists(ArrayList<Artist> artists) {
-        if(artists.isEmpty()){
+        if (artists.isEmpty()) {
             System.out.println("Nothing to show");
-        }else{
+        } else {
             System.out.println("---------------artist to show-------------------");
-            for(Artist artist : artists){
+            for (Artist artist : artists) {
                 System.out.println(artist.toString());
                 System.out.println("-------------------------------------------------");
             }
@@ -94,11 +85,11 @@ public class ArtistController {
     }
     //Get artist by index
     public Artist getArtistById(int id) {
-        return artists.get(id-1);
+        return artists.get(id - 1);
     }
-    //Show all technicals requirements form an artist
+    //Show all technical requirements from an artist
     public void showAllTechnicalRequirements(Artist artist) {
-        for(String technicalRequirement : artist.getTechnicalRequirements()){
+        for (String technicalRequirement : artist.getTechnicalRequirements()) {
             System.out.println(technicalRequirement);
         }
     }

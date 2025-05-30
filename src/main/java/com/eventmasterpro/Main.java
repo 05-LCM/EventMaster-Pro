@@ -1,17 +1,10 @@
 package com.eventmasterpro;
-
-import com.eventmasterpro.controller.ArtistController;
-import com.eventmasterpro.controller.EventController;
-import com.eventmasterpro.controller.FinanceController;
-import com.eventmasterpro.controller.LocationController;
-import com.eventmasterpro.model.Artist;
-import com.eventmasterpro.model.Event;
-import com.eventmasterpro.model.Finance;
-import com.eventmasterpro.model.Location;
+import com.eventmasterpro.controller.*;
+import com.eventmasterpro.model.*;
 import com.eventmasterpro.model.enums.EventCategory;
-
+import com.eventmasterpro.model.enums.TicketCategory;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -31,7 +24,19 @@ public class Main {
     private final static ArtistController artistController = ArtistController.getArtistController();
     //Event controller
     private final static EventController eventController = EventController.getEventController();
+    //Ticket controller
+    private final static TicketController ticketController = TicketController.getTicketController();
     public static void main(String[] args) {
+        DataController dataController = new DataController();
+        dataController.loadAllData();
+        //Start autosave
+        AutoSaveScheduler autoSave = new AutoSaveScheduler(dataController);
+        autoSave.startAutoSave();
+        //Save all data when the program is ended
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Saving data before exit...");
+            dataController.saveAllData();
+        }));
         displayMenu(args);
     }
     private static void displayMenu(String[] args){
@@ -79,21 +84,38 @@ public class Main {
     }
     //If user select 1
     private static void showEventsOptions(){
-        if(eventController.getEvents().isEmpty()){
-            System.out.println("No events yet");
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
         }else{
-            System.out.println("----------------Active events-----------------");
-            eventController.printEvents(eventController.getEvents());
+            System.out.println("Active event selected: " + actualEvent.getName());
         }
-        System.out.println("1. Create Event\n2. Delete Event\n3. Show event information\n4. Edit event\n5. Return to main menu");
+        System.out.println("""
+                0. Show All events
+                1. Create Event
+                2. Delete Event
+                3. Show event information
+                4. Edit event
+                5. Assign location for event
+                6. Select event
+                7. Assign a date to the event
+                8. Create tickets for the event
+                9. Get maximum number of tickets that can be created
+                10. Show tickets available for sale
+                11. Show tickets sold
+                12. Sold ticket for the event
+                13. Gets events by category
+                14. Return to main menu""");
         Scanner sc = new Scanner(System.in);
         try{
             int choice = sc.nextInt();
-            if(choice <0 || choice >5){
+            if(choice <0 || choice >16){
                 System.out.println("This number is not included in the available options");
                 showEventsOptions();
             }else{
                 switch (choice) {
+                    case 0:
+                        showAllEvents();
+                        break;
                     case 1:
                         creatEvent();
                         break;
@@ -107,6 +129,33 @@ public class Main {
                         editEvent();
                         break;
                     case 5:
+                        assignLocationEvent();
+                        break;
+                    case 6:
+                        selectEvent();
+                        break;
+                    case 7:
+                        assignDateToEvent();
+                        break;
+                    case 8:
+                        createTickets();
+                        break;
+                    case 9:
+                        getNumAvailableTicketsToCreate();
+                        break;
+                    case 10:
+                        getTicketsAvailable();
+                        break;
+                    case 11:
+                        showTicketsSold();
+                        break;
+                    case 12:
+                        soldTicket();
+                        break;
+                    case 13:
+                        getEventsByCategory();
+                        break;
+                    case 14:
                         displayMenu(null);
                         break;
                     default:
@@ -118,6 +167,17 @@ public class Main {
 
         }catch (Exception e){
             System.out.println("Please enter a valid option!");
+            showEventsOptions();
+        }
+    }
+    //Show all events
+    private static void showAllEvents(){
+        if(eventController.getEvents().isEmpty()){
+            System.out.println("No events yet");
+            showEventsOptions();
+        }else{
+            System.out.println("----------------Active events-----------------");
+            eventController.printEvents(eventController.getEvents());
             showEventsOptions();
         }
     }
@@ -137,7 +197,7 @@ public class Main {
                     sc.nextLine();
                     String description = sc.nextLine();
                     System.out.println("enter the new event date: ");
-                    LocalDateTime date = LocalDateTime.parse(sc.nextLine());
+                    LocalDate date = LocalDate.parse(sc.nextLine());
                     System.out.println("enter the new event capacity: ");
                     int capacity = sc.nextInt();
                     System.out.println("enter the new event price: ");
@@ -189,8 +249,8 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             System.out.println("Please enter the name of the event");
             String name = sc.nextLine();
-            System.out.println("Please enter the date of the event, with the following format: YYYY-MM-DDTHH:MM");
-            LocalDateTime date = LocalDateTime.parse(sc.nextLine());
+            System.out.println("Please enter the date of the event, with the following format: YYYY-MM-DD");
+            LocalDate date = LocalDate.parse(sc.nextLine());
             System.out.println("Please enter the description of the event");
             String description = sc.nextLine();
             EventCategory category = selectEventCategory();
@@ -249,9 +309,219 @@ public class Main {
             showEventsOptions();
         }
     }
+    //Assign  location for event
+    private static void assignLocationEvent(){
+        if(actualEvent==null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            if(locationController.getAllLocations().isEmpty()){
+                System.out.println("No locations added yet");
+                showEventsOptions();
+            }else{
+                locationController.showLocationsDetails(locationController.getAllLocations());
+                System.out.println("Please enter a ID of location to assign to the event");
+                try{
+                    Scanner sc = new Scanner(System.in);
+                    int id = sc.nextInt();
+                    Location location = locationController.getLocationById(id);
+                    if(location == null){
+                        System.out.println("Not location found");
+                        showEventsOptions();
+                    }else{
+                        eventController.assignLocationEvent(actualEvent,location);
+                        System.out.println("Assigned location event successfully");
+                        showEventsOptions();
+                    }
+                }catch (Exception e){
+                    System.out.println("Please enter a valid ID");
+                    System.out.println("-------------back to events menu----------");
+                    showEventsOptions();
+                }
+            }
+        }
+    }
+    //Select event
+    private static void selectEvent(){
+        if(actualEvent != null){
+            actualEvent = null;
+        }
+        eventController.printEvents(eventController.getEvents());
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter the ID of the event to select: ");
+        try{
+            int id = sc.nextInt();
+            actualEvent = eventController.getEventById(id);
+            if(actualEvent == null){
+                System.out.println("There is no event with the selected id.");
+                selectEvent();
+            }else{
+                System.out.println("Event selected successfully\n"+actualEvent);
+                showEventsOptions();
+            }
+        }catch (Exception e){
+            System.out.println("Please enter a valid ID");
+            System.out.println("-------------------------------------------------------");
+            selectEvent();
+        }
+    }
+    //Assign date to actual event selected
+    private static void assignDateToEvent(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            System.out.println("Please enter the date of the event");
+            try{
+                Scanner sc = new Scanner(System.in);
+                LocalDate date = LocalDate.parse(sc.next());
+                System.out.println(eventController.assignDateEvent(actualEvent,date));
+                showEventsOptions();
+            }catch (Exception e){
+                System.out.println("Please enter a valid date");
+                System.out.println("-------------back to events menu----------");
+                showEventsOptions();
+            }
+        }
+    }
+    //Create a tickets for the event
+    private static void createTickets(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            System.out.println("Please enter the number of the type of ticket you are going to create");
+            System.out.println("""
+                    1. Vip
+                    2. General
+                    3. Backstage
+                    4. Early access
+                    5. other
+                    """);
+            try{
+                Scanner sc = new Scanner(System.in);
+                TicketCategory category;
+                int choice = sc.nextInt();
+                switch (choice) {
+                    case 1 -> category = TicketCategory.VIP;
+                    case 2 -> category = TicketCategory.GENERAL;
+                    case 3 -> category = TicketCategory.BACKSTAGE;
+                    case 4 -> category = TicketCategory.EARLY_ACCESS;
+                    case 5 -> category = TicketCategory.OTHER;
+                    default -> {
+                        category = null;
+                        System.out.println("Please enter a valid option!");
+                        createTickets();
+                    }
+                }
+                System.out.println("Please enter the price of the ticket");
+                double price = sc.nextDouble();
+                System.out.println("Please enter the number of tickets you are going to generate");
+                int numTickets = sc.nextInt();
+                System.out.println(eventController.createTicketsEvent(numTickets,actualEvent,category,price));
+                showEventsOptions();
+            }catch (Exception e){
+                System.out.println("Please enter a valid number of the type of ticket or a valid amount for the price or or number of tickets");
+                System.out.println("-------------back to events menu----------");
+                showEventsOptions();
+            }
+        }
+    }
+    //Get a number of tickets available to create
+    private static void getNumAvailableTicketsToCreate(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            System.out.println(eventController.getNumAvailableTicketsToCreate(actualEvent));
+            showEventsOptions();
+        }
+    }
+    //Show tickets available for sale
+    private static void getTicketsAvailable(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            ArrayList<Ticket> ticketsAvailable = eventController.getTicketsAvailable(actualEvent);
+            ticketController.printTickets(ticketsAvailable);
+            showEventsOptions();
+        }
+    }
+    //Show all tickets sold
+    private static void showTicketsSold(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            ArrayList<Ticket> ticketsSold = eventController.getTicketsSold(actualEvent);
+            ticketController.printTickets(ticketsSold);
+            showEventsOptions();
+        }
+    }
+    //Sold ticket for actual event selected
+    private static void  soldTicket(){
+        if(actualEvent == null){
+            System.out.println("No event selected yet");
+            showEventsOptions();
+        }else{
+            ArrayList<Ticket> ticketsAvailable = eventController.getTicketsAvailable(actualEvent);
+            ticketController.printTickets(ticketsAvailable);
+            System.out.println("Please enter the id of the ticket to sell");
+            try{
+                Scanner sc = new Scanner(System.in);
+                int ticketId = sc.nextInt();
+                Ticket ticket = actualEvent.getTickets().get(ticketId - 1);
+                if(ticket == null){
+                    System.out.println("Ticket does not exist");
+                    showEventsOptions();
+                }else{
+                    System.out.println(eventController.soldTicket(actualEvent,ticket));
+                    showEventsOptions();
+                }
+            }catch (Exception e){
+                System.out.println("Please enter a valid id");
+                System.out.println("------------back to events menu----------");
+                showEventsOptions();
+            }
+        }
+    }
+    //Get all events given a category
+    private static void getEventsByCategory(){
+        System.out.println("""
+                Please select the number of the category
+                1. Concert
+                2. Festival
+                3. Conference
+                4. WorkShop
+                5. Other
+                """);
+        try{
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+            EventCategory category;
+            switch (choice) {
+                case 1 -> category = EventCategory.CONCERT;
+                case 2 -> category = EventCategory.FESTIVAL;
+                case 3 -> category = EventCategory.CONFERENCE;
+                case 4 -> category = EventCategory.WORKSHOP;
+                case 5 -> category = EventCategory.OTHER;
+                default -> {
+                    category = null;
+                    System.out.println("Please enter a valid option!");
+                    showEventsOptions();
+                }
+            }
+            eventController.printEvents(eventController.getEventsByCategory(category));
+            showEventsOptions();
+        }catch (Exception e){
+            System.out.println("Please enter a valid option!");
+            System.out.println("------------back to events menu----------");
+            showEventsOptions();
+        }
+    }
     //If user select 2
     private static void showArtistOptions(){
-        artistController.showArtists(artistController.getArtists());
         if(actualArtist == null){
             System.out.println("No artist selected yet");
         }else{
@@ -260,6 +530,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please select an option: ");
         System.out.println("""
+                0. Show all artists
                 1. Create artist
                 2. Select artis
                 3. Set artis in event\
@@ -273,11 +544,14 @@ public class Main {
                 9. Return to main menu""");
         try{
             int choice = sc.nextInt();
-            if(choice <1 || choice >9){
+            if(choice <0 || choice >9){
                 System.out.println("This number is not included in the available options");
                 showArtistOptions();
             }else{
                 switch (choice) {
+                    case 0:
+                        showAllArtists();
+                        break;
                     case 1:
                         createArtis();
                         break;
@@ -316,6 +590,11 @@ public class Main {
             showArtistOptions();
         }
     }
+    //Show all artist
+    private static void showAllArtists(){
+        artistController.showArtists(artistController.getArtists());
+        showArtistOptions();
+    }
     //Create artis
     private static void createArtis(){
         Scanner sc = new Scanner(System.in);
@@ -324,7 +603,6 @@ public class Main {
         System.out.println("Enter the artist's contact information: ");
         String contactInfo = sc.nextLine();
         Artist artist = artistController.createArtists(name,contactInfo);
-        artistController.addArtist(artist);
         System.out.println("Artis created");
         System.out.println(artist.toString());
         showArtistOptions();
@@ -452,7 +730,6 @@ public class Main {
     }
     //If user select 3
     private static void showLocationOptions(){
-        locationController.showLocationsDetails(locationController.getAllLocations());
         if(actualLocation == null){
             System.out.println("No location selected yet");
         }else{
@@ -461,6 +738,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please select an option: ");
         System.out.println("""
+                0. Show all Locations
                 1. Create Location
                 2. Select Location
                 3. Set Location in event\
@@ -470,14 +748,21 @@ public class Main {
                 6. Remove Technical Feature\
                 
                 7. Change Location Capacity
-                8. Return to main menu""");
+                8. Remove available date for location
+                9. Get available locations by date\
+                
+                10. Search for unavailable locations by date
+                11. Return to main menu""");
         try{
             int choice = sc.nextInt();
-            if(choice <0 || choice > 8){
+            if(choice <0 || choice > 11){
                 System.out.println("The option you entered is invalid");
                 showLocationOptions();
             }else{
                 switch (choice){
+                    case 0:
+                        showAllLocations();
+                        break;
                     case 1:
                         createLocation();
                         break;
@@ -500,6 +785,15 @@ public class Main {
                         changedCapacityLocation();
                         break;
                     case 8:
+                        deleteAvailableDate();
+                        break;
+                    case 9:
+                        getAvailableLocationsByDate();
+                        break;
+                    case 10:
+                        getUnavailableLocationsByDate();
+                        break;
+                    case 11:
                         displayMenu(null);
                         break;
                     default:
@@ -512,6 +806,11 @@ public class Main {
             System.out.println("-------------back to location menu----------");
             showLocationOptions();
         }
+    }
+    //Show all locations
+    private static void showAllLocations(){
+        locationController.showLocationsDetails(locationController.getAllLocations());
+        showLocationOptions();
     }
     //Create a new location
     private static void createLocation(){
@@ -662,9 +961,67 @@ public class Main {
             }
         }
     }
+    //Delete available date for a location
+    private static void deleteAvailableDate(){
+        Scanner sc = new Scanner(System.in);
+        if(actualLocation == null){
+            System.out.println("No location selected yet");
+            showLocationOptions();
+        }else{
+            try{
+                System.out.println("Enter the date you wish to delete: ");
+                LocalDate date = LocalDate.parse(sc.nextLine());
+                System.out.println(locationController.deleteDateAvailable(date, actualLocation));
+                showLocationOptions();
+            }catch (Exception e){
+                System.out.println("Please enter a valid date");
+                System.out.println("-------------back to location menu----------");
+                showLocationOptions();
+            }
+        }
+    }
+    //Get all available locations with a date
+    private static void getAvailableLocationsByDate(){
+        Scanner sc = new Scanner(System.in);
+        try{
+            System.out.println("Please enter the date you would like to check availability of locations");
+            LocalDate date = LocalDate.parse(sc.nextLine());
+            ArrayList<Location> locations = locationController.searchLocationsWithDate(date);
+            if(locations.isEmpty()){
+                System.out.println("No locations found");
+                showLocationOptions();
+            }else{
+                locationController.showLocationsDetails(locations);
+                showLocationOptions();
+            }
+        }catch (Exception e){
+            System.out.println("Please enter a valid date");
+            System.out.println("-------------back to location menu----------");
+            showLocationOptions();
+        }
+    }
+    //Get unavailable locations with date
+    private static void getUnavailableLocationsByDate(){
+        Scanner sc = new Scanner(System.in);
+        try{
+            System.out.println("Please enter the date you would like to check availability of locations");
+            LocalDate date = LocalDate.parse(sc.nextLine());
+            ArrayList<Location> locations = locationController.searchNotAvailableLocationsWithDate(date);
+            if(locations.isEmpty()){
+                System.out.println("No locations found");
+                showLocationOptions();
+            }else{
+                locationController.showLocationsDetails(locations);
+                showLocationOptions();
+            }
+        }catch (Exception e){
+            System.out.println("Please enter a valid date");
+            System.out.println("-------------back to location menu----------");
+            showLocationOptions();
+        }
+    }
     //If user select 4
     private static void showFinancesOptions(){
-        financeController.showFinances(financeController.getFinances());
         if(actualFinance == null){
             System.out.println("No finance selected yet");
         }else{
@@ -673,6 +1030,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please select an option: ");
         System.out.println("""
+                0. Show all finances
                 1. Create Finance for an event
                 2. Select Finance
                 3. Add Income\
@@ -684,11 +1042,14 @@ public class Main {
                 7. Return to main menu""");
         try{
             int choice = sc.nextInt();
-            if(choice <1 || choice > 7){
+            if(choice <0 || choice > 7){
                 System.out.println("This is not a valid option");
                 showFinancesOptions();
             }else{
                 switch (choice){
+                    case 0:
+                        showAllFinances();
+                        break;
                     case 1:
                         createFinance();
                         break;
@@ -713,6 +1074,7 @@ public class Main {
                     default:
                         System.out.println("Please enter a valid option");
                         showFinancesOptions();
+                        break;
                 }
             }
         }catch (Exception e){
@@ -720,6 +1082,11 @@ public class Main {
             System.out.println("-------------back to finance menu----------");
             showFinancesOptions();
         }
+    }
+    //Show all finances
+    private static void showAllFinances(){
+        financeController.showFinances(financeController.getFinances());
+        showFinancesOptions();
     }
     //Create finance
     private static void createFinance(){
@@ -846,7 +1213,7 @@ public class Main {
             System.out.println("No finance selected yet");
             showFinancesOptions();
         }else{
-            System.out.println("Event: "+actualFinance.getEvent().getName()+" currently has a balance of: "+actualFinance.getBalance());
+            System.out.println("Event: "+actualFinance.getEvent().getName()+" currently has a balance of: "+financeController.getBalance(actualFinance));
             System.out.println("Press enter to continue");
             sc.nextLine();
             showFinancesOptions();

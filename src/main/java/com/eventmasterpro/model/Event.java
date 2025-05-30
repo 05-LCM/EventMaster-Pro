@@ -3,9 +3,9 @@ package com.eventmasterpro.model;
 import com.eventmasterpro.model.enums.EventCategory;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 public class Event {
     //class attributes
@@ -13,45 +13,27 @@ public class Event {
     private final String name;
     private String description;
     private Location location; //The class include an object location for the location of the event
-    private LocalDateTime date;
-    private EventCategory category;
-    private ArrayList<Artist> artists; //List of the artist in the event
-    private ArrayList<Ticket> tickets; //Tickets of the event
+    private LocalDate date;
+    private final EventCategory category;
+    private final ArrayList<Artist> artists; //List of the artist in the event
+    private final ArrayList<Ticket> tickets; //Tickets of the event
     private int capacity;
     private double price;
     //Getters and setters methods
-    public double getId() {
-        return id;
-    }
     public String getName() {
         return name;
-    }
-    public String getDescription() {
-        return description;
     }
     public void setDescription(String description) {
         this.description = description;
     }
-    public Location getLocation() {
-        return location;
-    }
     public void setLocation(Location location) {
         this.location = location;
     }
-    public LocalDateTime getDate() {
-        return date;
-    }
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public EventCategory getCategory() {
         return category;
-    }
-    public void setCategory(EventCategory category) {
-        this.category = category;
-    }
-    public ArrayList<Artist> getArtists() {
-        return artists;
     }
     public ArrayList<Ticket> getTickets() {
         return tickets;
@@ -62,13 +44,86 @@ public class Event {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public double getPrice() {
-        return price;
-    }
     public void setPrice(double price) {
         this.price = price;
     }
     //Methods of the class
+    //To save object in to txt file
+    public String toFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(id).append(";").append(name != null ? name : "Unnamed event").append(";")
+                .append(description != null ? description : "No description").append(";").append(location != null ? location.getName() : "Location not assigned yet").append(";").append(date != null ? date.toString() : "Date not assigned yet").append(";")
+                .append(category != null ? category.name() : "Category not assigned yet").append(";").append(capacity).append(";").append(price).append(";");
+        // Artist names
+        if (artists != null && !artists.isEmpty()) {
+            for (Artist a : artists) {
+                sb.append(a.getName()).append("|");
+            }
+        }
+        sb.append(";");
+        // Ticket IDs
+        if (tickets != null && !tickets.isEmpty()) {
+            for (Ticket t : tickets) {
+                sb.append(t.getId()).append("|");
+            }
+        }
+        return sb.toString();
+    }
+    //File to events object
+    public static Event fromFileString(String line, Map<String, Location> locationsByName, List<Artist> allArtists) {
+        try {
+            String[] parts = line.split(";");
+            if (parts.length < 8) {
+                System.err.println("Invalid event line (too short): " + line);
+                return null;
+            }
+            String name = parts[1];
+            String description = parts[2];
+            String locationName = parts[3];
+            String dateStr = parts[4];
+            String categoryStr = parts[5];
+            int capacity = Integer.parseInt(parts[6]);
+            double price = Double.parseDouble(parts[7]);
+            // Get location if exist
+            Location location = locationsByName.getOrDefault(locationName, null);
+            // Try parse category
+            EventCategory category;
+            try {
+                category = EventCategory.valueOf(categoryStr);
+            } catch (IllegalArgumentException e) {
+                category = null;
+            }
+            // Parse date
+            LocalDate date = null;
+            if (!dateStr.equals("Date not assigned yet")) {
+                date = LocalDate.parse(dateStr);
+            }
+            Event.Builder builder = new Event.Builder(name, category)
+                    .description(description)
+                    .location(location)
+                    .date(date)
+                    .capacity(capacity)
+                    .price(price);
+
+            Event event = builder.build();
+            // If artist exist, parse artist
+            if (parts.length > 8 && !parts[8].isEmpty()) {
+                String[] artistNames = parts[8].split("\\|");
+                for (String artistName : artistNames) {
+                    for (Artist a : allArtists) {
+                        if (a.getName().equals(artistName)) {
+                            event.addNewArtist(a);
+                            break;
+                        }
+                    }
+                }
+            }
+            return event;
+        } catch (Exception ex) {
+            System.err.println("Invalid location or category for event line: " + line);
+            return null;
+        }
+    }
     //Constructor with the Builder object of the class
     private Event(Builder builder) {
         this.id = builder.id;
@@ -83,59 +138,9 @@ public class Event {
         this.price = builder.price;
     }
     //Add a new artist in the event
-    public String addNewArtist(Artist artist) {
-        //verify that the input object is not null
-        if(artists == null) {
-            return "The artist must contain all mandatory attributes";
-        }else{
-            //verify that the input object does not exist in the list of artists
-            if(checkArtist(artist)) {
-                return "The artist already exists";
-            }else{
-                //If not exist, add to the list of artists
-                artists.add(artist);
-                return "The artist added in the event "+this.name;
-            }
-        }
+    public void addNewArtist(Artist artist) {
+       artists.add(artist);
     }
-    //Delete an artist od the event
-    public String removeArtist(Artist artist)
-    {
-        //verify that the input object is not null
-        if(artists == null) {
-            return "The artist to be eliminated cannot be null";
-        }else{
-            //verify that the input object exists in the list of artists
-            if(checkArtist(artist)) {
-                artists.remove(artist);
-                return "The artist removed from the event "+this.name;
-            }
-            //If not exist send this message to the user
-            return "The artist does not exist";
-        }
-    }
-    //Check if the artist is in the list
-    public boolean checkArtist(Artist artist) {
-        //Return true or false if the artist is in the list of artists
-        return artists.contains(artist);
-    }
-    //Function to reschedule an event
-    public void rescheduleEvent(LocalDateTime newDate) {
-        this.date = newDate;
-    }
-    //Change a location of the event
-    public void changeLocation(Location location) {
-        this.location = location;
-    }
-    //Change a capacity of the event
-    public void changeCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-    //Changed a price of the event
-    public void changePrice(double price) {
-        this.price = price;
-    }
-    //Add ticket to the event
     public void addTicket(Ticket ticket) {
         tickets.add(ticket);
     }
@@ -152,7 +157,7 @@ public class Event {
         private final String name;
         private String description;
         private Location location; //The class include an object location for the location of the event
-        private LocalDateTime date;
+        private LocalDate date;
         private final EventCategory category;
         private final ArrayList<Artist> artists; //List of the artist in the event
         private final ArrayList<Ticket> tickets;
@@ -176,7 +181,7 @@ public class Event {
             return this;
         }
         //Set time
-        public Builder date(LocalDateTime date){
+        public Builder date(LocalDate date){
             this.date = date;
             return this;
         }
@@ -188,10 +193,6 @@ public class Event {
         public Builder price(double price){
             this.price = price;
             return this;
-        }
-        //Set the countID if previously created events are obtained
-        public static void setId(int id){
-            countID = id;
         }
         // Create Event with builder
         public Event build(){

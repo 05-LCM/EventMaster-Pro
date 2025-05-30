@@ -1,0 +1,1 @@
+Rereals b;250000.0;400.0;500.0;comida|No se|;Donacion|

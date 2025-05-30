@@ -1,0 +1,5 @@
+Carlos Vives;carlos.vives@email.com;Micrófono inalámbrico|Luces LED|Monitor de piso|
+Shakira;shakira@email.com;Pantalla gigante|Batería eléctrica|In-ear monitors|
+J Balvin;jbalvin@email.com;Sistema de sonido JBL|Luces estroboscópicas|
+Maluma;maluma@gmail.com;agua|
+zoe;zoe@gmail.com;

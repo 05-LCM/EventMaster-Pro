@@ -10,7 +10,7 @@ public class LocationController {
     //An array is made to store all the locations added by the user
     private ArrayList<Location> locations;
     //Create an input validator
-    private InputValidator validator = new InputValidator();
+    private final InputValidator validator = new InputValidator();
     //A singleton is made to handle only one instance of the class in the whole execution of the program
     private static LocationController locationController;
     private LocationController(){
@@ -18,7 +18,7 @@ public class LocationController {
     }
     //Get instance of the controller
     public static LocationController getLocationController() {
-        if(locationController==null){
+        if(locationController == null){
             locationController = new LocationController();
         }
         return locationController;
@@ -27,26 +27,28 @@ public class LocationController {
     private void createLocations(){
         locations = new ArrayList<>();
     }
+    //Set locations from external source (used by DataController)
+    public void setLocations(ArrayList<Location> locations) {
+        this.locations = locations;
+    }
     //Get all locations
     public ArrayList<Location> getAllLocations() {
         return locations;
     }
     //Get only Location by index
     public Location getLocationById(int index) {
-        Location location = locations.get(index-1);
-        return location;
+        return locations.get(index - 1);
     }
     //Create a new location
     public Location createLocation(String name, String address, int capacity) {
         //Validate fields
-        if (validator.checkEmpty(name) || validator.checkEmpty(address)|| capacity<=0) {
+        if (validator.checkEmpty(name) || validator.checkEmpty(address) || capacity <= 0) {
             return null;
         } else {
             //Create and add locations
             Location location = new Location(name, address, capacity);
             locations.add(location);
             return location;
-
         }
     }
     //Add date available
@@ -55,9 +57,9 @@ public class LocationController {
     }
     //Occupy available date
     public String deleteDateAvailable(LocalDate date, Location location) {
-        if(!location.getAvailableDates().contains(date)){
+        if (!location.getAvailableDates().contains(date)) {
             return "Location is not available on the requested date";
-        }else{
+        } else {
             location.getAvailableDates().remove(date);
             return "Location has been successfully occupied";
         }
@@ -66,7 +68,7 @@ public class LocationController {
     public ArrayList<Location> searchLocationsWithDate(LocalDate date) {
         ArrayList<Location> availableLocations = new ArrayList<>();
         for (Location location : locations) {
-            if(location.getAvailableDates().contains(date)){
+            if (location.getAvailableDates().contains(date)) {
                 availableLocations.add(location);
             }
         }
@@ -76,7 +78,7 @@ public class LocationController {
     public ArrayList<Location> searchNotAvailableLocationsWithDate(LocalDate date) {
         ArrayList<Location> notAvailableLocations = new ArrayList<>();
         for (Location location : locations) {
-            if(!location.getAvailableDates().contains(date)){
+            if (!location.getAvailableDates().contains(date)) {
                 notAvailableLocations.add(location);
             }
         }
@@ -96,11 +98,11 @@ public class LocationController {
     }
     //Show locations
     public void showLocationsDetails(ArrayList<Location> locations) {
-        if(locations.isEmpty()){
+        if (locations.isEmpty()) {
             System.out.println("Nothing to show");
-        }else{
+        } else {
             System.out.println("--------Locations Details--------");
-            for(Location location : locations){
+            for (Location location : locations) {
                 System.out.println(location.toString());
                 System.out.println("-----------------------------------------");
             }

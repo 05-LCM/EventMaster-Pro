@@ -1,0 +1,455 @@
+1;Rereals b;VIP;250.0;false
+2;Rereals b;VIP;250.0;true
+3;Rereals b;VIP;250.0;false
+4;Rereals b;VIP;250.0;false
+5;Rereals b;VIP;250.0;false
+6;Concierto Rock en Vivo;GENERAL;100.0;false
+7;Concierto Rock en Vivo;GENERAL;100.0;false
+8;Concierto Rock en Vivo;GENERAL;100.0;false
+9;Concierto Rock en Vivo;GENERAL;100.0;false
+10;Concierto Rock en Vivo;GENERAL;100.0;false
+11;Concierto Rock en Vivo;GENERAL;100.0;false
+12;Concierto Rock en Vivo;GENERAL;100.0;false
+13;Concierto Rock en Vivo;GENERAL;100.0;false
+14;Concierto Rock en Vivo;GENERAL;100.0;false
+15;Concierto Rock en Vivo;GENERAL;100.0;true
+16;Concierto Rock en Vivo;GENERAL;100.0;false
+17;Concierto Rock en Vivo;GENERAL;100.0;false
+18;Concierto Rock en Vivo;GENERAL;100.0;false
+19;Concierto Rock en Vivo;GENERAL;100.0;false
+20;Concierto Rock en Vivo;GENERAL;100.0;false
+21;Concierto Rock en Vivo;GENERAL;100.0;false
+22;Concierto Rock en Vivo;GENERAL;100.0;false
+23;Concierto Rock en Vivo;GENERAL;100.0;false
+24;Concierto Rock en Vivo;GENERAL;100.0;false
+25;Concierto Rock en Vivo;GENERAL;100.0;false
+26;Concierto Rock en Vivo;GENERAL;100.0;true
+27;Concierto Rock en Vivo;GENERAL;100.0;false
+28;Concierto Rock en Vivo;GENERAL;100.0;false
+29;Concierto Rock en Vivo;GENERAL;100.0;false
+30;Concierto Rock en Vivo;GENERAL;100.0;false
+31;Concierto Rock en Vivo;GENERAL;100.0;false
+32;Concierto Rock en Vivo;GENERAL;100.0;false
+33;Concierto Rock en Vivo;GENERAL;100.0;false
+34;Concierto Rock en Vivo;GENERAL;100.0;false
+35;Concierto Rock en Vivo;GENERAL;100.0;false
+36;Concierto Rock en Vivo;GENERAL;100.0;false
+37;Concierto Rock en Vivo;GENERAL;100.0;false
+38;Concierto Rock en Vivo;GENERAL;100.0;false
+39;Concierto Rock en Vivo;GENERAL;100.0;false
+40;Concierto Rock en Vivo;GENERAL;100.0;false
+41;Concierto Rock en Vivo;GENERAL;100.0;false
+42;Concierto Rock en Vivo;GENERAL;100.0;false
+43;Concierto Rock en Vivo;GENERAL;100.0;false
+44;Concierto Rock en Vivo;GENERAL;100.0;false
+45;Concierto Rock en Vivo;GENERAL;100.0;false
+46;Concierto Rock en Vivo;GENERAL;20.0;false
+47;Concierto Rock en Vivo;GENERAL;20.0;false
+48;Concierto Rock en Vivo;GENERAL;20.0;false
+49;Concierto Rock en Vivo;GENERAL;20.0;false
+50;Concierto Rock en Vivo;GENERAL;20.0;false
+51;Concierto Rock en Vivo;GENERAL;20.0;false
+52;Concierto Rock en Vivo;GENERAL;20.0;false
+53;Concierto Rock en Vivo;GENERAL;20.0;false
+54;Concierto Rock en Vivo;GENERAL;20.0;false
+55;Concierto Rock en Vivo;GENERAL;20.0;false
+56;Concierto Rock en Vivo;GENERAL;20.0;false
+57;Concierto Rock en Vivo;GENERAL;20.0;false
+58;Concierto Rock en Vivo;GENERAL;20.0;false
+59;Concierto Rock en Vivo;GENERAL;20.0;false
+60;Concierto Rock en Vivo;GENERAL;20.0;false
+61;Concierto Rock en Vivo;GENERAL;20.0;false
+62;Concierto Rock en Vivo;GENERAL;20.0;false
+63;Concierto Rock en Vivo;GENERAL;20.0;false
+64;Concierto Rock en Vivo;GENERAL;20.0;false
+65;Concierto Rock en Vivo;GENERAL;20.0;false
+66;Concierto Rock en Vivo;GENERAL;20.0;false
+67;Concierto Rock en Vivo;GENERAL;20.0;false
+68;Concierto Rock en Vivo;GENERAL;20.0;false
+69;Concierto Rock en Vivo;GENERAL;20.0;false
+70;Concierto Rock en Vivo;GENERAL;20.0;false
+71;Concierto Rock en Vivo;GENERAL;20.0;false
+72;Concierto Rock en Vivo;GENERAL;20.0;false
+73;Concierto Rock en Vivo;GENERAL;20.0;false
+74;Concierto Rock en Vivo;GENERAL;20.0;false
+75;Concierto Rock en Vivo;GENERAL;20.0;false
+76;Concierto Rock en Vivo;GENERAL;20.0;false
+77;Concierto Rock en Vivo;GENERAL;20.0;false
+78;Concierto Rock en Vivo;GENERAL;20.0;false
+79;Concierto Rock en Vivo;GENERAL;20.0;false
+80;Concierto Rock en Vivo;GENERAL;20.0;false
+81;Concierto Rock en Vivo;GENERAL;20.0;false
+82;Concierto Rock en Vivo;GENERAL;20.0;false
+83;Concierto Rock en Vivo;GENERAL;20.0;false
+84;Concierto Rock en Vivo;GENERAL;20.0;false
+85;Concierto Rock en Vivo;GENERAL;20.0;false
+86;Concierto Rock en Vivo;GENERAL;20.0;false
+87;Concierto Rock en Vivo;GENERAL;20.0;false
+88;Concierto Rock en Vivo;GENERAL;20.0;false
+89;Concierto Rock en Vivo;GENERAL;20.0;false
+90;Concierto Rock en Vivo;GENERAL;20.0;false
+91;Concierto Rock en Vivo;GENERAL;20.0;false
+92;Concierto Rock en Vivo;GENERAL;20.0;false
+93;Concierto Rock en Vivo;GENERAL;20.0;false
+94;Concierto Rock en Vivo;GENERAL;20.0;false
+95;Concierto Rock en Vivo;GENERAL;20.0;false
+96;Concierto Rock en Vivo;GENERAL;20.0;false
+97;Concierto Rock en Vivo;GENERAL;20.0;false
+98;Concierto Rock en Vivo;GENERAL;20.0;false
+99;Concierto Rock en Vivo;GENERAL;20.0;false
+100;Concierto Rock en Vivo;GENERAL;20.0;false
+101;Concierto Rock en Vivo;GENERAL;20.0;false
+102;Concierto Rock en Vivo;GENERAL;20.0;false
+103;Concierto Rock en Vivo;GENERAL;20.0;false
+104;Concierto Rock en Vivo;GENERAL;20.0;false
+105;Concierto Rock en Vivo;GENERAL;20.0;false
+106;Concierto Rock en Vivo;GENERAL;20.0;false
+107;Concierto Rock en Vivo;GENERAL;20.0;false
+108;Concierto Rock en Vivo;GENERAL;20.0;false
+109;Concierto Rock en Vivo;GENERAL;20.0;false
+110;Concierto Rock en Vivo;GENERAL;20.0;false
+111;Concierto Rock en Vivo;GENERAL;20.0;false
+112;Concierto Rock en Vivo;GENERAL;20.0;false
+113;Concierto Rock en Vivo;GENERAL;20.0;false
+114;Concierto Rock en Vivo;GENERAL;20.0;false
+115;Concierto Rock en Vivo;GENERAL;20.0;false
+116;Concierto Rock en Vivo;GENERAL;20.0;false
+117;Concierto Rock en Vivo;GENERAL;20.0;false
+118;Concierto Rock en Vivo;GENERAL;20.0;false
+119;Concierto Rock en Vivo;GENERAL;20.0;false
+120;Concierto Rock en Vivo;GENERAL;20.0;false
+121;Concierto Rock en Vivo;GENERAL;20.0;false
+122;Concierto Rock en Vivo;GENERAL;20.0;false
+123;Concierto Rock en Vivo;GENERAL;20.0;false
+124;Concierto Rock en Vivo;GENERAL;20.0;false
+125;Concierto Rock en Vivo;GENERAL;20.0;false
+126;Concierto Rock en Vivo;GENERAL;20.0;false
+127;Concierto Rock en Vivo;GENERAL;20.0;false
+128;Concierto Rock en Vivo;GENERAL;20.0;false
+129;Concierto Rock en Vivo;GENERAL;20.0;false
+130;Concierto Rock en Vivo;GENERAL;20.0;false
+131;Concierto Rock en Vivo;GENERAL;20.0;false
+132;Concierto Rock en Vivo;GENERAL;20.0;false
+133;Concierto Rock en Vivo;GENERAL;20.0;false
+134;Concierto Rock en Vivo;GENERAL;20.0;false
+135;Concierto Rock en Vivo;GENERAL;20.0;false
+136;Concierto Rock en Vivo;GENERAL;20.0;false
+137;Concierto Rock en Vivo;GENERAL;20.0;false
+138;Concierto Rock en Vivo;GENERAL;20.0;false
+139;Concierto Rock en Vivo;GENERAL;20.0;false
+140;Concierto Rock en Vivo;GENERAL;20.0;false
+141;Concierto Rock en Vivo;GENERAL;20.0;false
+142;Concierto Rock en Vivo;GENERAL;20.0;false
+143;Concierto Rock en Vivo;GENERAL;20.0;false
+144;Concierto Rock en Vivo;GENERAL;20.0;false
+145;Concierto Rock en Vivo;GENERAL;20.0;false
+146;Concierto Rock en Vivo;GENERAL;20.0;false
+147;Concierto Rock en Vivo;GENERAL;20.0;false
+148;Concierto Rock en Vivo;GENERAL;20.0;false
+149;Concierto Rock en Vivo;GENERAL;20.0;false
+150;Concierto Rock en Vivo;GENERAL;20.0;false
+151;Concierto Rock en Vivo;GENERAL;20.0;false
+152;Concierto Rock en Vivo;GENERAL;20.0;false
+153;Concierto Rock en Vivo;GENERAL;20.0;false
+154;Concierto Rock en Vivo;GENERAL;20.0;false
+155;Concierto Rock en Vivo;GENERAL;20.0;false
+156;Concierto Rock en Vivo;GENERAL;20.0;false
+157;Concierto Rock en Vivo;GENERAL;20.0;false
+158;Concierto Rock en Vivo;GENERAL;20.0;false
+159;Concierto Rock en Vivo;GENERAL;20.0;false
+160;Concierto Rock en Vivo;GENERAL;20.0;false
+161;Concierto Rock en Vivo;GENERAL;20.0;false
+162;Concierto Rock en Vivo;GENERAL;20.0;false
+163;Concierto Rock en Vivo;GENERAL;20.0;false
+164;Concierto Rock en Vivo;GENERAL;20.0;false
+165;Concierto Rock en Vivo;GENERAL;20.0;false
+166;Concierto Rock en Vivo;GENERAL;20.0;false
+167;Concierto Rock en Vivo;GENERAL;20.0;false
+168;Concierto Rock en Vivo;GENERAL;20.0;false
+169;Concierto Rock en Vivo;GENERAL;20.0;false
+170;Concierto Rock en Vivo;GENERAL;20.0;false
+171;Concierto Rock en Vivo;GENERAL;20.0;false
+172;Concierto Rock en Vivo;GENERAL;20.0;false
+173;Concierto Rock en Vivo;GENERAL;20.0;false
+174;Concierto Rock en Vivo;GENERAL;20.0;false
+175;Concierto Rock en Vivo;GENERAL;20.0;false
+176;Concierto Rock en Vivo;GENERAL;20.0;false
+177;Concierto Rock en Vivo;GENERAL;20.0;false
+178;Concierto Rock en Vivo;GENERAL;20.0;false
+179;Concierto Rock en Vivo;GENERAL;20.0;false
+180;Concierto Rock en Vivo;GENERAL;20.0;false
+181;Concierto Rock en Vivo;GENERAL;20.0;false
+182;Concierto Rock en Vivo;GENERAL;20.0;false
+183;Concierto Rock en Vivo;GENERAL;20.0;false
+184;Concierto Rock en Vivo;GENERAL;20.0;false
+185;Concierto Rock en Vivo;GENERAL;20.0;false
+186;Concierto Rock en Vivo;GENERAL;20.0;false
+187;Concierto Rock en Vivo;GENERAL;20.0;false
+188;Concierto Rock en Vivo;GENERAL;20.0;false
+189;Concierto Rock en Vivo;GENERAL;20.0;false
+190;Concierto Rock en Vivo;GENERAL;20.0;false
+191;Concierto Rock en Vivo;GENERAL;20.0;false
+192;Concierto Rock en Vivo;GENERAL;20.0;false
+193;Concierto Rock en Vivo;GENERAL;20.0;false
+194;Concierto Rock en Vivo;GENERAL;20.0;false
+195;Concierto Rock en Vivo;GENERAL;20.0;false
+196;Concierto Rock en Vivo;GENERAL;20.0;false
+197;Concierto Rock en Vivo;GENERAL;20.0;false
+198;Concierto Rock en Vivo;GENERAL;20.0;false
+199;Concierto Rock en Vivo;GENERAL;20.0;false
+200;Concierto Rock en Vivo;GENERAL;20.0;false
+201;Concierto Rock en Vivo;GENERAL;20.0;false
+202;Concierto Rock en Vivo;GENERAL;20.0;false
+203;Concierto Rock en Vivo;GENERAL;20.0;false
+204;Concierto Rock en Vivo;GENERAL;20.0;false
+205;Concierto Rock en Vivo;GENERAL;20.0;false
+206;Fundacion huellas de amor;GENERAL;50.0;false
+207;Fundacion huellas de amor;GENERAL;50.0;false
+208;Fundacion huellas de amor;GENERAL;50.0;false
+209;Fundacion huellas de amor;GENERAL;50.0;false
+210;Fundacion huellas de amor;GENERAL;50.0;false
+211;Fundacion huellas de amor;GENERAL;50.0;false
+212;Fundacion huellas de amor;GENERAL;50.0;false
+213;Fundacion huellas de amor;GENERAL;50.0;false
+214;Fundacion huellas de amor;GENERAL;50.0;false
+215;Fundacion huellas de amor;GENERAL;50.0;false
+216;Fundacion huellas de amor;GENERAL;50.0;false
+217;Fundacion huellas de amor;GENERAL;50.0;false
+218;Fundacion huellas de amor;GENERAL;50.0;false
+219;Fundacion huellas de amor;GENERAL;50.0;false
+220;Fundacion huellas de amor;GENERAL;50.0;false
+221;Fundacion huellas de amor;GENERAL;50.0;false
+222;Fundacion huellas de amor;GENERAL;50.0;false
+223;Fundacion huellas de amor;GENERAL;50.0;false
+224;Fundacion huellas de amor;GENERAL;50.0;false
+225;Fundacion huellas de amor;GENERAL;50.0;false
+226;Fundacion huellas de amor;GENERAL;50.0;false
+227;Fundacion huellas de amor;GENERAL;50.0;false
+228;Fundacion huellas de amor;GENERAL;50.0;false
+229;Fundacion huellas de amor;GENERAL;50.0;false
+230;Fundacion huellas de amor;GENERAL;50.0;false
+231;Fundacion huellas de amor;GENERAL;50.0;false
+232;Fundacion huellas de amor;GENERAL;50.0;false
+233;Fundacion huellas de amor;GENERAL;50.0;false
+234;Fundacion huellas de amor;GENERAL;50.0;false
+235;Fundacion huellas de amor;GENERAL;50.0;false
+236;Fundacion huellas de amor;GENERAL;50.0;false
+237;Fundacion huellas de amor;GENERAL;50.0;false
+238;Fundacion huellas de amor;GENERAL;50.0;false
+239;Fundacion huellas de amor;GENERAL;50.0;false
+240;Fundacion huellas de amor;GENERAL;50.0;false
+241;Fundacion huellas de amor;GENERAL;50.0;false
+242;Fundacion huellas de amor;GENERAL;50.0;false
+243;Fundacion huellas de amor;GENERAL;50.0;false
+244;Fundacion huellas de amor;GENERAL;50.0;false
+245;Fundacion huellas de amor;GENERAL;50.0;false
+246;Fundacion huellas de amor;GENERAL;50.0;false
+247;Fundacion huellas de amor;GENERAL;50.0;false
+248;Fundacion huellas de amor;GENERAL;50.0;false
+249;Fundacion huellas de amor;GENERAL;50.0;false
+250;Fundacion huellas de amor;GENERAL;50.0;false
+251;Fundacion huellas de amor;GENERAL;50.0;false
+252;Fundacion huellas de amor;GENERAL;50.0;false
+253;Fundacion huellas de amor;GENERAL;50.0;false
+254;Fundacion huellas de amor;GENERAL;50.0;false
+255;Fundacion huellas de amor;GENERAL;50.0;false
+256;Fundacion huellas de amor;GENERAL;50.0;false
+257;Fundacion huellas de amor;GENERAL;50.0;false
+258;Fundacion huellas de amor;GENERAL;50.0;false
+259;Fundacion huellas de amor;GENERAL;50.0;false
+260;Fundacion huellas de amor;GENERAL;50.0;false
+261;Fundacion huellas de amor;GENERAL;50.0;false
+262;Fundacion huellas de amor;GENERAL;50.0;false
+263;Fundacion huellas de amor;GENERAL;50.0;false
+264;Fundacion huellas de amor;GENERAL;50.0;false
+265;Fundacion huellas de amor;GENERAL;50.0;false
+266;Fundacion huellas de amor;GENERAL;50.0;false
+267;Fundacion huellas de amor;GENERAL;50.0;false
+268;Fundacion huellas de amor;GENERAL;50.0;false
+269;Fundacion huellas de amor;GENERAL;50.0;false
+270;Fundacion huellas de amor;GENERAL;50.0;false
+271;Fundacion huellas de amor;GENERAL;50.0;false
+272;Fundacion huellas de amor;GENERAL;50.0;false
+273;Fundacion huellas de amor;GENERAL;50.0;false
+274;Fundacion huellas de amor;GENERAL;50.0;false
+275;Fundacion huellas de amor;GENERAL;50.0;false
+276;Fundacion huellas de amor;GENERAL;50.0;false
+277;Fundacion huellas de amor;GENERAL;50.0;false
+278;Fundacion huellas de amor;GENERAL;50.0;false
+279;Fundacion huellas de amor;GENERAL;50.0;false
+280;Fundacion huellas de amor;GENERAL;50.0;false
+281;Fundacion huellas de amor;GENERAL;50.0;false
+282;Fundacion huellas de amor;GENERAL;50.0;false
+283;Fundacion huellas de amor;GENERAL;50.0;false
+284;Fundacion huellas de amor;GENERAL;50.0;false
+285;Fundacion huellas de amor;GENERAL;50.0;false
+286;Fundacion huellas de amor;GENERAL;50.0;false
+287;Fundacion huellas de amor;GENERAL;50.0;false
+288;Fundacion huellas de amor;GENERAL;50.0;false
+289;Fundacion huellas de amor;GENERAL;50.0;false
+290;Fundacion huellas de amor;GENERAL;50.0;false
+291;Fundacion huellas de amor;GENERAL;50.0;false
+292;Fundacion huellas de amor;GENERAL;50.0;false
+293;Fundacion huellas de amor;GENERAL;50.0;false
+294;Fundacion huellas de amor;GENERAL;50.0;false
+295;Fundacion huellas de amor;GENERAL;50.0;false
+296;Fundacion huellas de amor;GENERAL;50.0;false
+297;Fundacion huellas de amor;GENERAL;50.0;false
+298;Fundacion huellas de amor;GENERAL;50.0;false
+299;Fundacion huellas de amor;GENERAL;50.0;false
+300;Fundacion huellas de amor;GENERAL;50.0;false
+301;Fundacion huellas de amor;GENERAL;50.0;false
+302;Fundacion huellas de amor;GENERAL;50.0;false
+303;Fundacion huellas de amor;GENERAL;50.0;false
+304;Fundacion huellas de amor;GENERAL;50.0;false
+305;Fundacion huellas de amor;GENERAL;50.0;false
+306;concierto musical;VIP;10.0;false
+307;concierto musical;VIP;10.0;false
+308;concierto musical;VIP;10.0;false
+309;concierto musical;VIP;10.0;false
+310;concierto musical;VIP;10.0;false
+311;concierto musical;VIP;10.0;false
+312;concierto musical;VIP;10.0;false
+313;concierto musical;VIP;10.0;false
+314;concierto musical;VIP;10.0;false
+315;concierto musical;VIP;10.0;false
+316;concierto musical;VIP;10.0;false
+317;concierto musical;VIP;10.0;false
+318;concierto musical;VIP;10.0;false
+319;concierto musical;VIP;10.0;false
+320;concierto musical;VIP;10.0;false
+321;concierto musical;VIP;10.0;false
+322;concierto musical;VIP;10.0;false
+323;concierto musical;VIP;10.0;false
+324;concierto musical;VIP;10.0;false
+325;concierto musical;VIP;10.0;false
+326;concierto musical;VIP;10.0;false
+327;concierto musical;VIP;10.0;false
+328;concierto musical;VIP;10.0;false
+329;concierto musical;VIP;10.0;false
+330;concierto musical;VIP;10.0;false
+331;concierto musical;VIP;10.0;false
+332;concierto musical;VIP;10.0;false
+333;concierto musical;VIP;10.0;false
+334;concierto musical;VIP;10.0;false
+335;concierto musical;VIP;10.0;false
+336;concierto musical;VIP;10.0;false
+337;concierto musical;VIP;10.0;false
+338;concierto musical;VIP;10.0;false
+339;concierto musical;VIP;10.0;false
+340;concierto musical;VIP;10.0;false
+341;concierto musical;VIP;10.0;false
+342;concierto musical;VIP;10.0;false
+343;concierto musical;VIP;10.0;false
+344;concierto musical;VIP;10.0;false
+345;concierto musical;VIP;10.0;false
+346;concierto musical;VIP;10.0;false
+347;concierto musical;VIP;10.0;false
+348;concierto musical;VIP;10.0;false
+349;concierto musical;VIP;10.0;false
+350;concierto musical;VIP;10.0;false
+351;concierto musical;VIP;10.0;false
+352;concierto musical;VIP;10.0;false
+353;concierto musical;VIP;10.0;false
+354;concierto musical;VIP;10.0;false
+355;concierto musical;VIP;10.0;false
+356;concierto musical;VIP;10.0;false
+357;concierto musical;VIP;10.0;false
+358;concierto musical;VIP;10.0;false
+359;concierto musical;VIP;10.0;false
+360;concierto musical;VIP;10.0;false
+361;concierto musical;VIP;10.0;false
+362;concierto musical;VIP;10.0;false
+363;concierto musical;VIP;10.0;false
+364;concierto musical;VIP;10.0;false
+365;concierto musical;VIP;10.0;false
+366;concierto musical;VIP;10.0;false
+367;concierto musical;VIP;10.0;false
+368;concierto musical;VIP;10.0;false
+369;concierto musical;VIP;10.0;false
+370;concierto musical;VIP;10.0;false
+371;concierto musical;VIP;10.0;false
+372;concierto musical;VIP;10.0;false
+373;concierto musical;VIP;10.0;false
+374;concierto musical;VIP;10.0;false
+375;concierto musical;VIP;10.0;false
+376;concierto musical;VIP;10.0;false
+377;concierto musical;VIP;10.0;false
+378;concierto musical;VIP;10.0;false
+379;concierto musical;VIP;10.0;false
+380;concierto musical;VIP;10.0;false
+381;concierto musical;VIP;10.0;false
+382;concierto musical;VIP;10.0;false
+383;concierto musical;VIP;10.0;false
+384;concierto musical;VIP;10.0;false
+385;concierto musical;VIP;10.0;false
+386;concierto musical;VIP;10.0;false
+387;concierto musical;VIP;10.0;false
+388;concierto musical;VIP;10.0;false
+389;concierto musical;VIP;10.0;false
+390;concierto musical;VIP;10.0;false
+391;concierto musical;VIP;10.0;false
+392;concierto musical;VIP;10.0;false
+393;concierto musical;VIP;10.0;false
+394;concierto musical;VIP;10.0;false
+395;concierto musical;VIP;10.0;false
+396;concierto musical;VIP;10.0;false
+397;concierto musical;VIP;10.0;false
+398;concierto musical;VIP;10.0;false
+399;concierto musical;VIP;10.0;false
+400;concierto musical;VIP;10.0;false
+401;concierto musical;VIP;10.0;false
+402;concierto musical;VIP;10.0;false
+403;concierto musical;VIP;10.0;false
+404;concierto musical;VIP;10.0;false
+405;concierto musical;VIP;10.0;false
+406;concierto musical;VIP;10.0;false
+407;concierto musical;VIP;10.0;false
+408;concierto musical;VIP;10.0;false
+409;concierto musical;VIP;10.0;false
+410;concierto musical;VIP;10.0;false
+411;concierto musical;VIP;10.0;false
+412;concierto musical;VIP;10.0;false
+413;concierto musical;VIP;10.0;false
+414;concierto musical;VIP;10.0;false
+415;concierto musical;VIP;10.0;false
+416;concierto musical;VIP;10.0;false
+417;concierto musical;VIP;10.0;false
+418;concierto musical;VIP;10.0;false
+419;concierto musical;VIP;10.0;false
+420;concierto musical;VIP;10.0;false
+421;concierto musical;VIP;10.0;false
+422;concierto musical;VIP;10.0;false
+423;concierto musical;VIP;10.0;false
+424;concierto musical;VIP;10.0;false
+425;concierto musical;VIP;10.0;false
+426;concierto musical;VIP;10.0;false
+427;concierto musical;VIP;10.0;false
+428;concierto musical;VIP;10.0;false
+429;concierto musical;VIP;10.0;false
+430;concierto musical;VIP;10.0;false
+431;concierto musical;VIP;10.0;false
+432;concierto musical;VIP;10.0;false
+433;concierto musical;VIP;10.0;false
+434;concierto musical;VIP;10.0;false
+435;concierto musical;VIP;10.0;false
+436;concierto musical;VIP;10.0;false
+437;concierto musical;VIP;10.0;false
+438;concierto musical;VIP;10.0;false
+439;concierto musical;VIP;10.0;false
+440;concierto musical;VIP;10.0;false
+441;concierto musical;VIP;10.0;false
+442;concierto musical;VIP;10.0;false
+443;concierto musical;VIP;10.0;false
+444;concierto musical;VIP;10.0;false
+445;concierto musical;VIP;10.0;false
+446;concierto musical;VIP;10.0;false
+447;concierto musical;VIP;10.0;false
+448;concierto musical;VIP;10.0;false
+449;concierto musical;VIP;10.0;false
+450;concierto musical;VIP;10.0;false
+451;concierto musical;VIP;10.0;false
+452;concierto musical;VIP;10.0;false
+453;concierto musical;VIP;10.0;false
+454;concierto musical;VIP;10.0;false
+455;concierto musical;VIP;10.0;false
